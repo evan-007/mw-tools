@@ -10,4 +10,8 @@ puts "enter a word to look up"
 
 page = Nokogiri::XML(open("http://www.dictionaryapi.com/api/v1/references/learners/xml/#{@word}?key=#{@key}")) 
 # page = open("http://www.dictionaryapi.com/api/v1/references/learners/xml/#{@word}?key=#{@key}")
-puts page.xpath('/entry_list//entry/def').first
+goodies = page
+fh = File.new("output.xml", "w")
+fh.puts goodies
+fh.close
+#xsltproc XML/Scripts/display.xsl Texts/A/AB/ABC.xml > ABC.html
