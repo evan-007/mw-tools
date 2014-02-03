@@ -8,6 +8,6 @@ puts "enter a word to look up"
 
 @ref = "/xml/"
 
-page = Nokogiri::HTML(open("http://www.dictionaryapi.com/api/v1/references/learners/xml/#{@word}?key=#{@key}")) 
-
-puts page.css('entry_list entry dro dre').first.text
+page = Nokogiri::XML(open("http://www.dictionaryapi.com/api/v1/references/learners/xml/#{@word}?key=#{@key}")) 
+# page = open("http://www.dictionaryapi.com/api/v1/references/learners/xml/#{@word}?key=#{@key}")
+puts page.xpath('/entry_list//entry/def').first
